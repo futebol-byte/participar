@@ -515,6 +515,10 @@ function escutarAtualizacoes(){
     });
 
     document.getElementById("qtd-preenchidas").textContent = preenchidas;
+  }, (erro) => {
+    // Se cair aqui, geralmente é bloqueio de LEITURA nas regras do Firebase
+    console.error("Erro ao ler pelada/vagas:", erro);
+    alert("Não foi possível carregar as vagas em tempo real. Verifique as regras de LEITURA (.read) do Realtime Database. Erro: " + erro.message);
   });
 }
 
